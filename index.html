@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>Ejemplo API Q+ Angular</title>
+</head>
+<body ng-app="promises_q">
+	<div ng-controller="PromiseCtrl">
+		<select ng-model="model_estados" ng-options="estado.id_estado as estado.nombre_estado for estado in estados" ng-change="llenarMunicipios(model_estados)">
+			<option value="">- Seleccione -</option>
+		</select>
+		<select ng-model="model_municipios" ng-options="municipio.id_municipio as municipio.nombre_municipio for municipio in municipios" ng-change="llenarParroquias(model_estados, model_municipios)" ng-disabled="!model_estados">
+			<option value="">- Seleccione -</option>
+		</select>
+		<select ng-model="model_parroquias" ng-options="parroquia.id_parroquia as parroquia.nombre_parroquia for parroquia in parroquias" ng-disabled="!model_estados || !model_municipios">
+			<option value="">- Seleccione -</option>
+		</select>
+	</div>
+	<script src="angular.min.js"></script>
+	<script src="angular-local-storage.js"></script>
+	<script src="jexia_auth_service.js"></script>
+	<script src="cache_service.js"></script>
+	<script src="ubicacion_service.js"></script>
+	<script src="controllers.js"></script>
+</body>
+</html>
